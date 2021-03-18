@@ -1,3 +1,6 @@
 [submodule "v1/project-duolingo-db"]
 	path = v1/project-duolingo-db
 	url = https://github.com/sguzman/project-duolingo-db
+[submodule "v1/project-duolingo-user-grabber"]
+	path = v1/project-duolingo-user-grabber
+	url = https://github.com/sguzman/project-duolingo-user-grabber
