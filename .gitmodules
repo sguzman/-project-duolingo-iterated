@@ -4,6 +4,6 @@
 [submodule "v1/project-duolingo-user-grabber"]
 	path = v1/project-duolingo-user-grabber
 	url = https://github.com/sguzman/project-duolingo-user-grabber
-[submodule "v2/duo-get-http"]
-	path = v2/duo-get-http
-	url = https://github.com/sguzman/duo-get-http
+[submodule "v2/project-duolingo-v2-db"]
+	path = v2/project-duolingo-v2-db
+	url = https://github.com/sguzman/project-duolingo-v2-db
