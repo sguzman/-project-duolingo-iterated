@@ -10,3 +10,18 @@
 [submodule "v2/project-duolingo-v2-get-http"]
 	path = v2/project-duolingo-v2-get-http
 	url = https://github.com/sguzman/project-duolingo-v2-get-http
+[submodule "v2/project-duolingo-v2-user"]
+	path = v2/project-duolingo-v2-user
+	url = https://github.com/sguzman/project-duolingo-v2-user
+[submodule "v2/project-duolingo-v2-sql"]
+	path = v2/project-duolingo-v2-sql
+	url = https://github.com/sguzman/project-duolingo-v2-sql
+[submodule "v2/project-duolingo-v2-clock"]
+	path = v2/project-duolingo-v2-clock
+	url = https://github.com/sguzman/project-duolingo-v2-clock
+[submodule "v2/project-duolingo-v2-sql-read"]
+	path = v2/project-duolingo-v2-sql-read
+	url = https://github.com/sguzman/project-duolingo-v2-sql-read
+[submodule "v2/project-duolingo-v2-sql-write"]
+	path = v2/project-duolingo-v2-sql-write
+	url = https://github.com/sguzman/project-duolingo-v2-sql-write
