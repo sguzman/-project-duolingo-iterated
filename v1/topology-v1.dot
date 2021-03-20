@@ -1,7 +1,7 @@
 digraph {
   compound = true;
   subgraph cluster_duo {
-      label = "Duo User Friends Grab";
+      label = "Duo User Friends Grab V1";
       
       subgraph cluster_duo_api {
           label = "Duo API";
