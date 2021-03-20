@@ -25,6 +25,7 @@ services:
       PG_DB: duolingo
       sleep: 5
     image: guzmansalv/project-duolingo-user-grabber
+    restart: always
     networks:
       - duolingo
 
