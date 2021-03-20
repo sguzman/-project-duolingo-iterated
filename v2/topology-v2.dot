@@ -1,0 +1,49 @@
+digraph {
+  compound = true;
+  subgraph cluster_duo {
+      label = "Duo User Friends Grab V2";
+      
+      subgraph cluster_duo_api {
+          label = "Duo API";
+          DuoUserFriendship;
+      }
+
+      subgraph cluster_micro {
+          label = "Micro";
+          MClock;
+          MUser;
+          MHttp;
+          MSQL;
+          MSQLWrite;
+          MSQLRead;
+      }
+
+      subgraph cluster_db {
+          label = "DB"
+          UserDB;
+          UserQueueDB;
+      }
+  }
+
+    MClock -> MUser [label="1."];
+    MUser -> MSQL [label="2."]
+    MSQL -> MSQLRead [label="3."]
+    MSQLRead -> UserQueueDB [label="4."]
+    UserQueueDB -> MSQLRead [label="5."]
+
+    MSQLRead -> MSQLWrite [label="5.1"]
+    MSQLWrite -> UserDB [label="5.2"]
+    UserDB -> MSQLWrite [label="5.3"]
+    MSQLWrite -> MSQLRead [label="5.4"]
+    MSQLRead -> UserQueueDB [label="5.5"]
+    MSQLRead -> UserQueueDB [label="5.6"]
+    UserQueueDB -> MSQLRead [label="5.7"]
+
+    MSQLRead -> MUser [label="6"]
+    MUser -> MHttp [label="7"]
+    MHttp -> DuoUserFriendship [label="8"]
+    DuoUserFriendship -> MHttp [label="9"]
+    MHttp -> MUser [label="10"]
+    MUser -> MSQL [label="11"]
+    MSQL -> MSQLWrite [label="12"]
+}
