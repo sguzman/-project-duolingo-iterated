@@ -19,6 +19,11 @@ services:
     environment:
       TZ: America/Los_Angeles
       PG_PORT: 5432
+      PG_HOST: project-duolingo-db
+      PG_USER: admin
+      PG_PASS: admin
+      PG_DB: duolingo
+      sleep: 5
     image: guzmansalv/project-duolingo-user-grabber
     networks:
       - duolingo
