@@ -1,0 +1,27 @@
+version: '3.9'
+
+services:
+  project-duolingo-v2-db:
+    environment:
+      TZ: America/Los_Angeles
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: duolingo
+      POSTGRES_HOST_AUTH_METHOD: trust
+    image: guzmansalv/project-duolingo-v2-db
+    restart: always
+    ports:
+      - 5433:5432
+    hostname: project-duolingo-db
+    networks:
+        - duolingo
+  project-duolingo-v2-get-http:
+    environment:
+      TZ: America/Los_Angeles
+    image: guzmansalv/project-duolingo-v2-get-http
+    restart: always
+    networks:
+      - duolingo
+
+networks:
+    duolingo:
