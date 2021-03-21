@@ -12,7 +12,7 @@ services:
     restart: always
     ports:
       - 5433:5432
-    hostname: project-duolingo-db
+    hostname: project-duolingo-v2-db
     networks:
         - duolingo
   project-duolingo-v2-get-http:
@@ -23,8 +23,74 @@ services:
       PORT: 9090
     image: guzmansalv/project-duolingo-v2-get-http
     restart: always
+    hostname: project-duolingo-v2-get-http
     networks:
       - duolingo
+  project-duolingo-v2-user:
+      environment:
+          TZ: America/Los_Angeles
+          PORT: 9091
+          HTTP_PORT: 9090
+          HTTP_IP: project-duolingo-v2-get-http
+          SQL_PORT: 9092
+          SQL_IP: project-duolingo-v2-sql
+      image: guzmansalv/project-duolingo-v2-user
+      restart: always
+      hostname: project-duolingo-v2-user
+      networks:
+          - duolingo
+  project-duolingo-v2-sql:
+      environment:
+          TZ: America/Los_Angeles
+          PORT: 9092
+          READ_PORT: 9093
+          READ_IP: project-duolingo-v2-sql-read
+          WRITE_PORT: 9094
+          WRITE_IP: project-duolingo-v2-sql-write
+      image: guzmansalv/project-duolingo-v2-sql
+      restart: always
+      hostname: project-duolingo-v2-sql
+      networks:
+          - duolingo
+  project-duolingo-v2-sql-read:
+      environment:
+          TZ: America/Los_Angeles
+          PORT: 9093
+          PG_PORT: 5432
+          PG_HOST: project-duolingo-v2-db
+          PG_USER: admin
+          PG_PASS: admin
+          PG_DB: duolingo
+      image: guzmansalv/project-duolingo-v2-sql-read
+      restart: always
+      hostname: project-duolingo-v2-sql-read
+      networks:
+          - duolingo
+  project-duolingo-v2-sql-write:
+      environment:
+          TZ: America/Los_Angeles
+          PORT: 9094
+          PG_PORT: 5432
+          PG_HOST: project-duolingo-v2-db
+          PG_USER: admin
+          PG_PASS: admin
+          PG_DB: duolingo
+      image: guzmansalv/project-duolingo-v2-sql-write
+      restart: always
+      hostname: project-duolingo-v2-sql-write
+      networks:
+          - duolingo
+  project-duolingo-v2-clock:
+      environment:
+          TZ: America/Los_Angeles
+          USER_PORT: 9091
+          USER_IP: project-duolingo-v2-user
+          SLEEP: 20
+      image: guzmansalv/project-duolingo-v2-clock
+      restart: always
+      hostname: project-duolingo-v2-clock
+      networks:
+          - duolingo
 
 networks:
     duolingo:
