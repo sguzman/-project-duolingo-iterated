@@ -18,6 +18,9 @@ services:
   project-duolingo-v2-get-http:
     environment:
       TZ: America/Los_Angeles
+      DUO_USER: beep-boop1
+      DUO_PASS: 'NCi4b#-RzQ3v-n2'
+      PORT: 9090
     image: guzmansalv/project-duolingo-v2-get-http
     restart: always
     networks:
